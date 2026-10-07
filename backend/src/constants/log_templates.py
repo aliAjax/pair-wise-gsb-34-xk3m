@@ -28,5 +28,13 @@ LOG_TEMPLATES = {
     "HazardTicket.update",
     "HazardTicket.status",
     "HazardTicket.export"
+  ],
+  "DeviceReplacement": [
+    "DeviceReplacement.submit",
+    "DeviceReplacement.confirm",
+    "DeviceReplacement.conflict",
+    "DeviceReplacement.pendingReview",
+    "DeviceReplacement.backfill",
+    "DeviceReplacement.step"
   ]
 }

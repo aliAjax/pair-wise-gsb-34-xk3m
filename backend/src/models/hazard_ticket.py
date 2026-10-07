@@ -8,3 +8,5 @@ class HazardTicket(BaseModel):
     rectify_status: str
     rectify_note: str
     closed_at: str
+    device_id: int | float | None = None
+    replacement_id: int | float | None = None

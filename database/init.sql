@@ -17,8 +17,12 @@ CREATE TABLE IF NOT EXISTS fire_device (
   location_desc TEXT,
   install_date TEXT,
   status TEXT,
-  next_maintenance_at TEXT
+  next_maintenance_at TEXT,
+  qr_code TEXT
 );
+
+-- 二维码同一时刻只绑定一台设备
+CREATE UNIQUE INDEX IF NOT EXISTS fire_device_qr_code_unique ON fire_device (qr_code) WHERE qr_code IS NOT NULL;
 
 CREATE TABLE IF NOT EXISTS inspection_task (
   id INTEGER PRIMARY KEY,
@@ -28,7 +32,9 @@ CREATE TABLE IF NOT EXISTS inspection_task (
   task_type TEXT,
   status TEXT,
   checklist_version TEXT,
-  finished_at TEXT
+  finished_at TEXT,
+  device_id TEXT,
+  replacement_id TEXT
 );
 
 CREATE TABLE IF NOT EXISTS inspection_result (
@@ -50,7 +56,26 @@ CREATE TABLE IF NOT EXISTS hazard_ticket (
   deadline TEXT,
   rectify_status TEXT,
   rectify_note TEXT,
-  closed_at TEXT
+  closed_at TEXT,
+  device_id TEXT,
+  replacement_id TEXT
+);
+
+-- 报废更换交接账：预占 → 待核 → 接管 / 冲突，全程按 steps_done 落账可恢复
+CREATE TABLE IF NOT EXISTS device_replacement (
+  id INTEGER PRIMARY KEY,
+  request_id TEXT UNIQUE,
+  old_device_id TEXT,
+  new_device_id TEXT,
+  status TEXT,
+  reason TEXT,
+  operator_id TEXT,
+  qr_code TEXT,
+  created_at TEXT,
+  confirmed_at TEXT,
+  conflict_with TEXT,
+  steps_done TEXT,
+  pending_record_ids TEXT
 );
 
 CREATE TABLE IF NOT EXISTS audit_log (
@@ -59,5 +84,6 @@ CREATE TABLE IF NOT EXISTS audit_log (
   action TEXT,
   target_type TEXT,
   target_id TEXT,
+  detail TEXT,
   created_at TEXT
 );

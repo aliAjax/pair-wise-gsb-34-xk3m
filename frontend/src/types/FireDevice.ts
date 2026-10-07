@@ -8,4 +8,5 @@ export interface FireDevice {
   install_date: string;
   status: string;
   next_maintenance_at: string;
+  qr_code: string | null;
 }

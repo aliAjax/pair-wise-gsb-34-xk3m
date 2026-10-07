@@ -1,4 +1,4 @@
 def create_hazard_ticket_dto(**overrides):
-    row = {"id":1,"result_id":1,"severity":"severity 1","owner_id":1,"deadline":"deadline 1","rectify_status":"IN_PROGRESS","rectify_note":"rectify note 1","closed_at":"2026-06-11T09:00:00Z"}
+    row = {"id":1,"result_id":2,"severity":"HIGH","owner_id":1,"deadline":"2026-10-30T09:00:00Z","rectify_status":"OPEN","rectify_note":"等待新灭火器到位","closed_at":"","device_id":1,"replacement_id":None}
     row.update(overrides)
     return row

@@ -8,3 +8,5 @@ class InspectionTask(BaseModel):
     status: str
     checklist_version: str
     finished_at: str
+    device_id: int | float | None = None
+    replacement_id: int | float | None = None

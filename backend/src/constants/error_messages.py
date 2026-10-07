@@ -1,1 +1,1 @@
-ERROR_MESSAGES = {"AUTH_REQUIRED": "missing token", "RBAC_DENIED": "role denied", "VALIDATION_FAILED": "invalid payload"}
+ERROR_MESSAGES = {"AUTH_REQUIRED": "missing token", "RBAC_DENIED": "role denied", "VALIDATION_FAILED": "invalid payload", "DEVICE_NOT_FOUND": "旧设备不存在或已注销", "REPLACEMENT_NOT_FOUND": "更换单不存在", "REPLACEMENT_CONFLICT": "旧设备已被另一张更换单接管，本单保留填写并标记冲突", "REPLACEMENT_PENDING_REVIEW": "存在缺少更换关系的旧记录，补齐前不能确认接管", "REPLACEMENT_INVALID_STATE": "当前更换单状态不允许该操作"}

@@ -1,0 +1,1 @@
+DeviceStatus = ["ACTIVE", "PREOCCUPIED", "RETIRED", "RELEASED"]
