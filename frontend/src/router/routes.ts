@@ -8,6 +8,10 @@ export const routes = [
     "route": "/devices"
   },
   {
+    "name": "设备报废更换交接",
+    "route": "/replacement"
+  },
+  {
     "name": "巡检任务",
     "route": "/tasks"
   },

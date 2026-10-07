@@ -3,6 +3,7 @@ class InspectionTask(BaseModel):
     id: int | float
     building_id: int | float
     inspector_id: int | float
+    device_id: int | float
     plan_date: str
     task_type: str
     status: str

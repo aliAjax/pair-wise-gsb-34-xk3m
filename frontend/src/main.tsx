@@ -4,10 +4,11 @@ import { routes } from "./router/routes";
 import { mockData } from "./mocks/seedData";
 import { StatusBadge } from "./components/common/StatusBadge";
 import { StatCard } from "./components/common/StatCard";
+import { ReplacementPage } from "./pages/ReplacementPage";
 import "./styles.css";
 
 function Page({ name }: { name: string }) {
-  const entities = Object.entries(mockData);
+  const entities = Object.entries(mockData).filter(([key]) => key !== "replacementOrder" && key !== "qrArchive" && key !== "operationLog");
   const total = useMemo(() => entities.reduce((sum, [, rows]) => sum + rows.length, 0), [entities]);
   return <main className="page">
     <section className="page-head">
@@ -42,6 +43,15 @@ function Page({ name }: { name: string }) {
 function App() {
   const [active, setActive] = useState<string>(routes[0]?.route ?? "/dashboard");
   const current = routes.find((route) => route.route === active) ?? routes[0];
+  if (active === "/replacement") {
+    return <div className="shell">
+      <aside>
+        <div className="brand">消防设施巡检维保平台</div>
+        <nav>{routes.map((route) => <button key={route.route} className={active === route.route ? "active" : ""} onClick={() => setActive(route.route)}>{route.name}</button>)}</nav>
+      </aside>
+      <ReplacementPage />
+    </div>;
+  }
   return <div className="shell">
     <aside>
       <div className="brand">消防设施巡检维保平台</div>

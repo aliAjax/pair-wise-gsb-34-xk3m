@@ -2,6 +2,7 @@ from pydantic import BaseModel
 class HazardTicket(BaseModel):
     id: int | float
     result_id: int | float
+    device_id: int | float
     severity: str
     owner_id: int | float
     deadline: str
